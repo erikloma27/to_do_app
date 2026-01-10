@@ -16,8 +16,29 @@ fn main_menu() -> String {
     guess
 }
 
+fn print_task() {
+    println!("Print task!")
+
+}
+
+fn add_task() {
+    println!("Add task!")
+
+}
+
+fn remove_task() {
+    println!("Remove task!")
+
+}
+
 fn main() {
     let opt = main_menu();
+    let opt: i8 = opt.trim().parse().expect("Type a valid number!");
 
-    println!("{opt}")
+    match opt {
+        1 => print_task(),
+        2 => add_task(),
+        3 => remove_task(),
+        _ => println!("Invalid option"), 
+    };
 }
