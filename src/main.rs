@@ -1,6 +1,14 @@
 use std::io;
 
-fn main_menu() -> String {
+struct Task {
+    name: String,
+    description: String,
+    start_date: i32,
+    end_date: i32,
+
+}
+
+fn main_menu() -> i8 {
     println!("To-do Application");
     println!("Insert an option:");
     println!("1. Show pending tasks");
@@ -13,7 +21,7 @@ fn main_menu() -> String {
         .read_line(&mut guess)
         .expect("Failed to option");
 
-    guess
+    guess.trim().parse().expect("Type a valid number!")
 }
 
 fn print_task() {
@@ -33,7 +41,6 @@ fn remove_task() {
 
 fn main() {
     let opt = main_menu();
-    let opt: i8 = opt.trim().parse().expect("Type a valid number!");
 
     match opt {
         1 => print_task(),
